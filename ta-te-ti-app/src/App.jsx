@@ -14,7 +14,7 @@ function App() {
   })
   const [turn, setTurn] = useState(() => {
     const savedTurn = localStorage.getItem('turn')
-    return savedTurn ? savedTurn : TURNS.X
+    return savedTurn || TURNS.X
   })
   const [winner, setWinner] = useState(null)
   const [winnerCombo, setWinnerCombo] = useState(null)
