@@ -1,5 +1,5 @@
 import './App.css'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import confetti from 'canvas-confetti'
 import { Square } from './components/Square'
 import { WinnerModal } from './components/WinnerModal'

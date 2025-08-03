@@ -1,4 +1,3 @@
-import React from 'react'
 import { Square } from './Square'
 
 export function WinnerModal ({ winner, resetGame, onClose }) {
