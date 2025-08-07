@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import styles from './App.module.css'
 import { useCatImage } from '../hooks/useCatImage'
 import { useCatFact } from '../hooks/useCatFact'
