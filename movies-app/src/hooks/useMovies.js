@@ -7,15 +7,13 @@ export function useMovies({ search, sort }) {
   const [loading, setLoading] = useState(false);
 
   const previousSearch = useRef(search);
-  console.log(previousSearch);
-  console.log(previousSearch.current == search);
 
   const getMovies = useCallback(async ({ search }) => {
+    if (previousSearch.current == search) return;
     try {
       setError(null);
       setLoading(true);
-      if (previousSearch.current == search) return;
-
+      previousSearch.current = search;
       const newMovies = await searchMovies({ search });
       SetMovies(newMovies);
       setLoading(false);

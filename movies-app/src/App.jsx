@@ -16,7 +16,7 @@ function App() {
   const debouncedGetMovies = useCallback(
     debounce((search) => {
       getMovies({ search })
-    }, 300)
+    }, 300000000)
   , [getMovies])
  
   const handleSubmit = (event) => {
