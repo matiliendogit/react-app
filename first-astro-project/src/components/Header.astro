@@ -1,0 +1,19 @@
+---
+import HeaderButton from './HeaderButton.astro';
+---
+
+<header class="py-8 px-4 mx-auto lg:py-16 lg:px-6 bg-gray-800 rounded-lg">
+    <di class="mx-auto text-center mb-8 lg:mb:16">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-green-100">
+            First Astro Project
+        </h2>
+        <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+            Learning the basics of Astro.
+        </p>
+    </div>
+    <nav class="flex flex-col gap-3 justify-between w-full text-center md:flex-row text-gray-400 pt-5">
+        <HeaderButton href="/">New Content</HeaderButton>
+        <HeaderButton href="/contact">Contact</HeaderButton>
+        <HeaderButton href="/info">FAQs</HeaderButton>
+    </nav>
+</header>
