@@ -1,8 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import "../styles/global.css";
+import HeaderButton from '../components/HeaderButton.astro';
+import Launches from '../components/Launches.astro';
+import Welcome from '../components/Welcome.astro';
+
 ---
 
-<Layout>
-	PRINCIPAL CONTENT
+<Layout title='Astro First Project'>
+	<Welcome/>
+	<Launches/>
+	
 </Layout>
