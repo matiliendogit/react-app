@@ -1,0 +1,49 @@
+---
+import { getLaunchById, getLatestLaunches } from '../../services/spacex';
+import Layout from '../../layouts/Layout.astro';
+
+const { id } = Astro.params;
+
+let launch
+
+if(id){
+    launch = await getLaunchById({ id });
+}
+
+export const getStaticPaths = async () => {
+    const launches = await getLatestLaunches();
+    return launches.map(launch => ({ params: { id: launch.id } }));
+};
+
+
+---
+
+<article>
+    <Layout title={launch ? `Launch ${launch.flight_number}` : 'Launch Not Found'}>
+        {
+            launch ? (
+                <section class="max-w-4xl mx-auto p-8">
+                    <header class="mb-8">
+                        <h1 class="text-4xl font-bold mb-4">Flight #{launch.flight_number}</h1>
+                        <p class="text-gray-text-gray-300">Launch Date: {new Date(launch.date_utc).toLocaleDateString()}</p>
+                        <p class="text-gray-text-gray-300">Rocket ID: {launch.rocket}</p>
+                        <p class="text-gray-text-gray-300">Launchpad ID: {launch.launchpad}</p>
+                    </header>
+
+                    <picture class="flex justify-center mb-8">
+                        <img class="rounded-lg" src={launch.links.patch.small ?? '/placeholder.png'} alt={`Patch for launch ${launch.id}`} />
+                    </picture>
+
+                    <section>
+                        <h2 class="text-2xl font-semibold mb-4">Details</h2>
+                        <p class="text-gray-300">{launch.details ?? 'No details available.'}</p>
+                    </section>
+                </section>
+            ) : (
+                <section class="text-center p-8">
+                    <h2 class="text-2xl font-semibold mb-4">Launch Not Found</h2>
+                    <p class="text-gray-300">The launch with ID "{id}" does not exist.</p>
+                </section>
+            )
+        }
+    </Layout>
